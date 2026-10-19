@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23E31E50%27/%3E%3Ctext x=%2716%27 y=%2723%27 font-family=%27Arial%27 font-weight=%27700%27 font-size=%2719%27 fill=%27white%27 text-anchor=%27middle%27%3EF%3C/text%3E%3C/svg%3E">
+<title>ForgeMe 1.1.5</title>
+<meta name="description" content="Tout ce que la version 1.1.5 apporte à ForgeMe, et où en est la sortie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --fond: #FFFFFF; --fond-gris: #F5F5F7; --fond-noir: #000000;
+  --texte: #1D1D1F; --texte-2: #6E6E73; --texte-3: #86868B; --texte-clair: #F5F5F7;
+  --trait: #D2D2D7; --trait-fin: #E8E8ED;
+  --rose: #E31E50; --vert: #34C759;
+  --rayon: 18px; --largeur: 980px;
+  --police: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, "Helvetica Neue", Arial, sans-serif;
+  --ombre: 0 2px 6px rgba(0,0,0,.04), 0 12px 32px rgba(0,0,0,.06);
+  --coche: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 4 4L19 6'/%3E%3C/svg%3E");
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; background: var(--fond); color: var(--texte); font: 17px/1.47 var(--police); letter-spacing: -.01em; -webkit-font-smoothing: antialiased; }
+.contenu { max-width: var(--largeur); margin: 0 auto; padding: 0 22px; }
+
+.heros { background: var(--fond-noir); color: var(--texte-clair); text-align: center; padding: 110px 0 96px; }
+.marque { font-weight: 800; font-size: 22px; letter-spacing: -.02em; margin: 0 0 28px; }
+.marque span { color: var(--rose); }
+.heros h1 { font-size: clamp(44px, 8vw, 80px); line-height: 1.04; font-weight: 700; letter-spacing: -.035em; margin: 0; }
+.heros p.chapo { font-size: clamp(19px, 2.4vw, 24px); line-height: 1.35; color: #A1A1A6; max-width: 720px; margin: 22px auto 0; }
+.date { margin-top: 30px; font-size: 14px; color: var(--texte-3); }
+.pastilles { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
+.pastille { font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 980px; background: rgba(255,255,255,.1); color: #F5F5F7; }
+.pastille.ok { background: rgba(52,199,89,.18); color: #7EE29A; }
+
+section { padding: 96px 0; }
+section.gris { background: var(--fond-gris); }
+.surtitre { font-size: 14px; font-weight: 600; color: var(--rose); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 10px; }
+h2 { font-size: clamp(32px, 5vw, 48px); line-height: 1.08; font-weight: 700; letter-spacing: -.03em; margin: 0 0 16px; }
+.intro { font-size: 21px; line-height: 1.4; color: var(--texte-2); max-width: 760px; margin: 0 0 48px; }
+
+.coches { list-style: none; margin: 0; padding: 0; }
+.coches li { position: relative; padding: 0 0 20px 44px; }
+.coches li::before { content: ""; position: absolute; left: 13px; top: 30px; bottom: 2px; width: 2px; border-radius: 1px; background: rgba(52,199,89,.35); }
+.coches li:last-child { padding-bottom: 0; }
+.coches li:last-child::before { display: none; }
+.coches li::after { content: ""; position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--vert) var(--coche) center / 15px no-repeat; }
+.coches li strong { font-weight: 600; }
+.coches li p { margin: 0; padding-top: 2px; }
+.coches.petit li { padding: 0 0 14px 34px; font-size: 16px; line-height: 1.42; }
+.coches.petit li::before { left: 10px; top: 24px; }
+.coches.petit li::after { width: 22px; height: 22px; background-size: 12px; }
+.coches.petit li p { padding-top: 0; }
+
+.grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+.carte { background: var(--fond); border-radius: var(--rayon); padding: 26px 26px 24px; box-shadow: var(--ombre); }
+.carte h4 { font-size: 19px; font-weight: 700; letter-spacing: -.015em; margin: 0 0 8px; display: flex; align-items: center; gap: 10px; }
+.carte h4 .rond { flex: 0 0 22px; width: 22px; height: 22px; border-radius: 50%; background: var(--vert) var(--coche) center / 12px no-repeat; }
+.carte p { margin: 0; color: var(--texte-2); font-size: 16px; line-height: 1.45; }
+
+.themes { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 18px; }
+.theme { background: var(--fond-gris); border-radius: var(--rayon); padding: 28px 28px 26px; }
+.theme h3 { font-size: 21px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 18px; }
+
+.chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 18px; }
+.chiffre { background: var(--fond-gris); border-radius: var(--rayon); padding: 28px 22px; text-align: center; }
+.gris .chiffre { background: var(--fond); box-shadow: var(--ombre); }
+.chiffre b { display: block; font-size: 48px; line-height: 1.05; font-weight: 700; letter-spacing: -.03em; }
+.chiffre span { display: block; margin-top: 8px; color: var(--texte-2); font-size: 15px; }
+.chiffres + .coches { margin-top: 44px; }
+
+.frise { list-style: none; margin: 0; padding: 0; max-width: 720px; }
+.frise li { position: relative; padding: 0 0 30px 52px; }
+.frise li::before { content: ""; position: absolute; left: 15px; top: 34px; bottom: 4px; width: 2px; background: var(--trait); border-radius: 1px; }
+.frise li:last-child::before { display: none; }
+.frise .rond { position: absolute; left: 0; top: 0; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 14px; border: 2px solid var(--trait); color: var(--texte-2); background: var(--fond); }
+.frise li.fait .rond { background: var(--vert) var(--coche) center / 16px no-repeat; border-color: var(--vert); color: transparent; }
+.frise li.fait::before { background: var(--vert); }
+.frise li.encours .rond { background: var(--rose); border-color: var(--rose); color: #fff; box-shadow: 0 0 0 6px rgba(227,30,80,.14); }
+.frise h4 { margin: 4px 0 4px; font-size: 19px; font-weight: 700; letter-spacing: -.015em; }
+.frise p { margin: 0; color: var(--texte-2); font-size: 16px; }
+.frise li.avenir h4, .frise li.avenir p { opacity: .62; }
+
+.ecrans { border-top: 1px solid var(--trait-fin); }
+.ecran { display: grid; grid-template-columns: 210px 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--trait-fin); }
+.ecran b { font-weight: 600; }
+.ecran p { margin: 0; color: var(--texte-2); }
+@media (max-width: 734px) {
+  section { padding: 72px 0; }
+  .heros { padding: 84px 0 72px; }
+  .contenu { padding: 0 16px; }
+  .ecran { grid-template-columns: 1fr; gap: 4px; }
+  .themes { grid-template-columns: 1fr; }
+  .theme { padding: 24px 20px 22px; }
+}
+
+footer { background: var(--fond-gris); color: var(--texte-3); font-size: 13px; padding: 28px 0 40px; text-align: center; }
+.revele { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
+.revele.vu { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .revele { opacity: 1; transform: none; transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="heros">
+  <div class="contenu">
+    <p class="marque">ForgeMe<span>.</span></p>
+    <h1>La 1.1.5.<br>Entièrement repensée.</h1>
+    <p class="chapo">Chaque écran redessiné avec soin, des dizaines de nouvelles fonctions, et une app pensée pour qu'on ait envie d'y revenir chaque jour.</p>
+    <div class="pastilles">
+      <span class="pastille ok">Développement terminé</span>
+      <span class="pastille">Campagne de tests en cours</span>
+      <span class="pastille">Sortie avec la version 1.1.5 (37)</span>
+    </div>
+    <p class="date">Mis à jour le 19 octobre 2026</p>
+  </div>
+</header>
+
+<section>
+  <div class="contenu revele">
+    <p class="surtitre">En quelques chiffres</p>
+    <h2>Un travail de fond.</h2>
+    <p class="intro">Ces dernières semaines, ForgeMe a été reprise de fond en comble&nbsp;: le design, les fonctions, l'abonnement, les notifications, la sécurité et le site.</p>
+    <div class="chiffres">
+      <div class="chiffre"><b>15</b><span>écrans redessinés</span></div>
+      <div class="chiffre"><b>140+</b><span>améliorations</span></div>
+      <div class="chiffre"><b>6</b><span>langues, partout</span></div>
+      <div class="chiffre"><b>282</b><span>notifications écrites à la main</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="gris">
+  <div class="contenu revele">
+    <p class="surtitre">Où en est la sortie</p>
+    <h2>Le développement est terminé.</h2>
+    <p class="intro">Il reste les essais et la mise en ligne, dans cet ordre.</p>
+    <ol class="frise">
+      <li class="fait"><span class="rond">1</span><h4>La refonte de l'application et du site</h4><p>Tous les écrans, l'abonnement, les notifications, la fiabilité.</p></li>
+      <li class="fait"><span class="rond">2</span><h4>Les mises à niveau demandées par Apple et Google</h4><p>Android 16, iOS 27 et le serveur, déjà en ligne.</p></li>
+      <li class="fait"><span class="rond">3</span><h4>Les tests automatiques</h4><p>Des milliers de contrôles, et les parcours essentiels rejoués sur iPhone, Android et le site.</p></li>
+      <li class="encours"><span class="rond">4</span><h4>La campagne des testeurs</h4><p>Sur la version de test, puis la correction de leurs retours.</p></li>
+      <li class="avenir"><span class="rond">5</span><h4>La version finale</h4><p>Pour l'App Store et Google Play.</p></li>
+      <li class="avenir"><span class="rond">6</span><h4>Les fiches des stores</h4><p>Les textes sont prêts en 6 langues, l'allemand et le danois en plus ; les captures arrivent.</p></li>
+      <li class="avenir"><span class="rond">7</span><h4>La mise en place de l'offre</h4><p>Chez Apple, Google et pour le paiement par carte&nbsp;: prix, essai de 14 jours, retrait des anciennes formules.</p></li>
+      <li class="avenir"><span class="rond">8</span><h4>La mise en ligne</h4><p>L'envoi à Apple et Google, puis, le jour J, le passage à la nouvelle offre et l'annonce aux utilisateurs.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="contenu revele">
+    <p class="surtitre">Écran par écran</p>
+    <h2>Un seul style. Partout.</h2>
+    <p class="intro">Tous les écrans suivent maintenant le même style, épuré à la manière d'Apple&nbsp;: les mêmes cartes, les mêmes gestes, les mêmes animations, en clair comme en sombre.</p>
+    <div class="ecrans">
+      <div class="ecran"><b>Démarrage</b><p>Une belle photo plein écran avec «&nbsp;ForgeMe.&nbsp;» remplace la vidéo et l'écran noir&nbsp;; l'app s'ouvre plus vite.</p></div>
+      <div class="ecran"><b>Accueil</b><p>Une mise en page aérée, la date façon Calendrier, un cadran de progression fluide, les quêtes en cartes, le coffre, la charge de la semaine et des raccourcis.</p></div>
+      <div class="ecran"><b>Tâches</b><p>Une carte par section, une coche animée avec son et vibration, un glissé pour archiver ou supprimer, les 7 jours en haut, une fiche native d'iPhone pour chaque tâche, les sous-tâches en fil.</p></div>
+      <div class="ecran"><b>Objectifs</b><p>Des cartes avec un anneau de progression et une frise du temps&nbsp;; la page d'un objectif montre son rythme, son historique et ses étapes.</p></div>
+      <div class="ecran"><b>Rituels</b><p>L'anneau du jour et la série en tête, la semaine en 7 ronds, une coche directe depuis la carte, les 7 derniers jours visibles.</p></div>
+      <div class="ecran"><b>Idées</b><p>10 couleurs vives, en grille ou en liste, une recherche, une fiche en couleur et une saisie plein écran.</p></div>
+      <div class="ecran"><b>Journal</b><p>Un en-tête pleine page, la série et la semaine, les entrées par mois, une recherche, un calendrier et un éditeur épuré.</p></div>
+      <div class="ecran"><b>Dates importantes</b><p>La photo de la prochaine date en grand, le calendrier dans la photo, des filtres, et les dates du jour en cartes photo sur l'accueil.</p></div>
+      <div class="ecran"><b>Voyages</b><p>Une carte du monde plein écran avec des épingles photo&nbsp;; les voyages dans un panneau en bas de la carte, et le bouton «&nbsp;Je suis ici&nbsp;».</p></div>
+      <div class="ecran"><b>Courses et Notes</b><p>Les courses rangées par rayon, «&nbsp;3 tomates&nbsp;» compris tout seul, un mode magasin&nbsp;; des post-it de couleur&nbsp;; tout synchronisé avec le site.</p></div>
+      <div class="ecran"><b>Notifications</b><p>Rangées par Aujourd'hui, Hier et Cette semaine&nbsp;; les non lues bien visibles&nbsp;; un glissé pour effacer ou marquer comme lu.</p></div>
+      <div class="ecran"><b>Paramètres et profil</b><p>Organisés comme les Réglages de l'iPhone, avec une carte de profil et la gestion des données, et une fermeture d'un simple glissé.</p></div>
+      <div class="ecran"><b>Articles et conseils</b><p>De grandes cartes façon App Store, une lecture façon Apple News, des j'aime et des partages, 10 articles traduits en 6 langues.</p></div>
+      <div class="ecran"><b>Statistiques</b><p>De nouveaux graphiques plus clairs, une courbe colorée et la moyenne mise en valeur.</p></div>
+      <div class="ecran"><b>FocusMe</b><p>Un minuteur de concentration avec pauses, intention, statistiques, son et notification de fin.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="gris">
+  <div class="contenu revele">
+    <p class="surtitre">Nouvelles fonctions</p>
+    <h2>Plus simple. Plus vivant.</h2>
+    <p class="intro">Ce qui n'existait pas avant la 1.1.5.</p>
+    <div class="grille">
+      <div class="carte"><h4><span class="rond"></span>Une tâche en une phrase</h4><p>On écrit «&nbsp;rdv dentiste jeudi 15h&nbsp;» et l'app comprend la date, l'heure, la catégorie et la priorité. Dans les 6 langues, essayé sur plus de 800 phrases.</p></div>
+      <div class="carte"><h4><span class="rond"></span>Annuler, toujours</h4><p>Après chaque création ou suppression, un bouton Annuler. Une erreur se rattrape d'un toucher, sans fenêtre «&nbsp;Êtes-vous sûr&nbsp;?&nbsp;».</p></div>
+      <div class="carte"><h4><span class="rond"></span>Une corbeille de 30 jours</h4><p>Tout ce qui est supprimé se retrouve et revient à sa place exacte, sur l'app comme sur le site.</p></div>
+      <div class="carte"><h4><span class="rond"></span>Des widgets</h4><p>Sur iPhone et Android, en 3 tailles, en clair et en sombre, sur l'écran verrouillé de l'iPhone, avec un ajout rapide de tâche.</p></div>
+      <div class="carte"><h4><span class="rond"></span>Une gamification refaite</h4><p>13 pièces, 20 pin's, une mascotte, des quêtes du jour, une flamme de série, des défis de 7, 30 et 100 jours, des badges à partager.</p></div>
+      <div class="carte"><h4><span class="rond"></span>Des icônes au choix</h4><p>Nuit, Or, Forge ou Blanc, et une icône de fête qui apparaît toute seule à Noël, au nouvel an, à la Saint-Valentin, à Halloween et en été.</p></div>
+      <div class="carte"><h4><span class="rond"></span>L'humeur du jour</h4><p>Notée en un geste, gardée même en changeant de téléphone, avec sa courbe sur 30 jours et un petit mot de la mascotte.</p></div>
+      <div class="carte"><h4><span class="rond"></span>La citation du jour</h4><p>À découvrir chaque matin, à aimer et à partager en belle image.</p></div>
+      <div class="carte"><h4><span class="rond"></span>Le bilan de la semaine</h4><p>Le dimanche soir et le lundi, la carte «&nbsp;Ta semaine&nbsp;»&nbsp;: le chiffre clé et les sept jours d'un coup d'œil, à partager.</p></div>
+      <div class="carte"><h4><span class="rond"></span>Face ID dès l'ouverture</h4><p>Comme dans les grandes apps&nbsp;: la reconnaissance se fait sur l'écran de démarrage, et l'app apparaît en fondu.</p></div>
+      <div class="carte"><h4><span class="rond"></span>La barre «&nbsp;Perle&nbsp;»</h4><p>Une nouvelle barre d'onglets nacrée, en 10 couleurs&nbsp;; on change d'onglet en glissant simplement le doigt.</p></div>
+      <div class="carte"><h4><span class="rond"></span>«&nbsp;Quoi de neuf&nbsp;»</h4><p>À chaque mise à jour, la mascotte présente les nouveautés.</p></div>
+      <div class="carte"><h4><span class="rond"></span>Des micro-animations</h4><p>Un bouton + en ressort, des onglets qui rebondissent, des cartes qui se soulèvent, un compteur de points qui roule.</p></div>
+      <div class="carte"><h4><span class="rond"></span>Un export complet</h4><p>Toutes ses données dans un vrai fichier, sur iPhone et Android, comme le demande le RGPD.</p></div>
+      <div class="carte"><h4><span class="rond"></span>Des raccourcis</h4><p>Un appui long sur l'icône propose Nouvelle tâche, Nouvelle idée, Lancer un Focus et Liste de courses.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="contenu revele">
+    <p class="surtitre">Les petites attentions</p>
+    <h2>Chaque détail compte.</h2>
+    <p class="intro">Un tour complet de l'app, écran par écran, a fait naître une longue série d'attentions. Ce sont elles qui rendent ForgeMe agréable au quotidien.</p>
+    <div class="themes">
+      <div class="theme"><h3>Accueil</h3><ul class="coches petit">
+        <li><p>La mascotte dit où en est la journée&nbsp;: ce qu'il reste à faire, ou que tout est fait.</p></li>
+        <li><p>La prochaine activité est annoncée («&nbsp;Dans 25 min&nbsp;», puis «&nbsp;Maintenant&nbsp;»).</p></li>
+        <li><p>Le soir, la carte devient le bilan du jour, avec un bouton pour préparer demain.</p></li>
+        <li><p>Le jour d'un anniversaire, un bouton prépare un petit mot.</p></li>
+        <li><p>Un écran «&nbsp;Mon humeur&nbsp;» avec la série, un calendrier coloré et la répartition des humeurs.</p></li>
+        <li><p>Le coffre du jour montre clairement les 3 quêtes à réussir.</p></li>
+      </ul></div>
+      <div class="theme"><h3>Flamme, défis et classement</h3><ul class="coches petit">
+        <li><p>«&nbsp;Ma flamme&nbsp;»&nbsp;: le calendrier jour par jour, le record, le prochain palier et le gel de la semaine.</p></li>
+        <li><p>Après les 7 jours, de nouveaux défis de 30 puis 100 jours.</p></li>
+        <li><p>Les paliers de série se partagent en image.</p></li>
+        <li><p>Le classement montre les joueurs juste devant et juste derrière, et les places gagnées.</p></li>
+      </ul></div>
+      <div class="theme"><h3>Tâches</h3><ul class="coches petit">
+        <li><p>La dernière tâche cochée de la journée est fêtée&nbsp;: «&nbsp;Journée bouclée&nbsp;».</p></li>
+        <li><p>Les tâches en retard se déplacent toutes d'un coup, avec un seul Annuler.</p></li>
+        <li><p>Une liste collée d'une note ou d'un mail devient plusieurs tâches, chacune avec sa date.</p></li>
+        <li><p>Le temps prévu de la journée, et l'heure à laquelle on sera libre.</p></li>
+        <li><p>Dupliquer une tâche, la reporter à ce soir, demain, ce week-end ou lundi.</p></li>
+        <li><p>Les tâches qui se répètent se reconnaissent d'un coup d'œil, avec leur propre page refaite.</p></li>
+        <li><p>Un formulaire redessiné façon Rappels d'Apple, avec la répétition résumée en toutes lettres.</p></li>
+      </ul></div>
+      <div class="theme"><h3>Rituels et FocusMe</h3><ul class="coches petit">
+        <li><p>La journée rangée en Matin, Après-midi, Soir et À tout moment.</p></li>
+        <li><p>Un petit mot après chaque rituel, à relire ensuite.</p></li>
+        <li><p>Les séries de 7, 21, 30, 66 et 100 jours fêtées et partageables.</p></li>
+        <li><p>Les rituels à compter, comme «&nbsp;8 verres d'eau&nbsp;», et 8 modèles prêts à l'emploi.</p></li>
+        <li><p>Un rituel avec une durée se lance dans le minuteur FocusMe.</p></li>
+        <li><p>Trois rythmes de concentration prêts, et le temps passé ajouté à la tâche.</p></li>
+      </ul></div>
+      <div class="theme"><h3>Partager et se souvenir</h3><ul class="coches petit">
+        <li><p>Une idée, une note ou une journée se partagent en image.</p></li>
+        <li><p>Un voyage se partage comme une carte postale, et son anniversaire rappelle le souvenir.</p></li>
+        <li><p>Un bouton «&nbsp;Souhaiter&nbsp;» prépare le message d'anniversaire et son image.</p></li>
+        <li><p>Le journal rappelle ce qui a été écrit il y a un mois, ou il y a un an.</p></li>
+        <li><p>Quand toute la liste de courses est cochée, l'app le fête.</p></li>
+      </ul></div>
+      <div class="theme"><h3>Formulaires et réglages</h3><ul class="coches petit">
+        <li><p>Les fiches de création redessinées, plus simples, comme sur iPhone.</p></li>
+        <li><p>Le bouton pour enregistrer toujours en bas, au même endroit, même clavier ouvert.</p></li>
+        <li><p>Les archives réglables par type, et un rituel archivé enfin récupérable.</p></li>
+        <li><p>Une aide et un support refaits, avec une conversation façon messagerie.</p></li>
+        <li><p>Une invitation à un ami avec le lien iPhone et le lien Android.</p></li>
+      </ul></div>
+      <div class="theme"><h3>L'identité ForgeMe</h3><ul class="coches petit">
+        <li><p>Le rose ForgeMe redevient la couleur d'accent partout.</p></li>
+        <li><p>La mascotte revient dans l'aide, les textes légaux et la page Contact.</p></li>
+        <li><p>Les packs, les données suivies et les humeurs retrouvent leur icône et leur couleur.</p></li>
+        <li><p>Les priorités et catégories s'affichent dans leur couleur dans les formulaires.</p></li>
+      </ul></div>
+      <div class="theme"><h3>Fluidité</h3><ul class="coches petit">
+        <li><p>Passer d'un onglet à l'autre est immédiat.</p></li>
+        <li><p>Les écrans s'ouvrent tout de suite sur ce qu'on avait déjà, sans attente.</p></li>
+        <li><p>Le défilement de l'accueil est plus fluide, et rien ne saute sous le doigt.</p></li>
+        <li><p>La fenêtre de saisie monte en douceur avec le clavier.</p></li>
+        <li><p>Toucher l'onglet Accueil remonte l'accueil et le met à jour.</p></li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="gris">
+  <div class="contenu revele">
+    <p class="surtitre">Abonnement</p>
+    <h2>Une seule offre. Tout débloqué.</h2>
+    <p class="intro">ForgeMe Premium&nbsp;: 9,99&nbsp;€ par mois ou 59,99&nbsp;€ par an, soit 5&nbsp;€ par mois.</p>
+    <ul class="coches">
+      <li><p><strong>14 jours d'essai gratuit</strong>, puis l'abonnement démarre, annulable à tout moment. Un rappel arrive deux jours avant la fin de l'essai.</p></li>
+      <li><p><strong>Rien n'est jamais perdu</strong>&nbsp;: sans abonnement, le compte passe en lecture seule. On voit et on exporte toujours ses données.</p></li>
+      <li><p><strong>Les utilisateurs actuels sont choyés</strong>&nbsp;: 14 jours de Premium offerts à la mise à jour, et les abonnés gardent leur abonnement et leur prix.</p></li>
+      <li><p><strong>Un nouvel accueil</strong>&nbsp;: on choisit son objectif, son premier rituel et ses premières tâches, on découvre son plan prêt, puis sa formule.</p></li>
+      <li><p><strong>Un accès bien gardé</strong>, vérifié par le serveur pour Apple, Google et le paiement par carte sur le site.</p></li>
+      <li><p><strong>Une transition en douceur</strong>&nbsp;: les anciennes versions invitent à mettre à jour, et tout peut être suspendu à tout moment en cas de souci.</p></li>
+      <li><p><strong>Quand l'abonnement se termine</strong>, l'écran Premium rappelle tout ce qui a été accompli.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="contenu revele">
+    <p class="surtitre">Notifications</p>
+    <h2>Faire revenir. Sans déranger.</h2>
+    <p class="intro">Une vraie campagne de notifications, avec au plus 2 encouragements par jour, à l'heure de chacun et dans sa langue.</p>
+    <ul class="coches">
+      <li><p><strong>Un petit signe</strong> après 2, 4, 7, 14 et 30 jours d'absence, avec le prénom, puis plus rien.</p></li>
+      <li><p><strong>La série en danger</strong>&nbsp;: un mot le soir, quand la flamme risque de s'éteindre.</p></li>
+      <li><p><strong>Les réussites célébrées</strong>&nbsp;: badges, niveaux, quêtes, journées parfaites et records.</p></li>
+      <li><p><strong>Des rappels fiables</strong> pour les tâches et les dates, avec leur vrai titre.</p></li>
+      <li><p><strong>282 textes</strong> écrits pour ne jamais se répéter d'un jour à l'autre.</p></li>
+      <li><p><strong>Toucher une notification</strong> ouvre directement ce dont elle parle.</p></li>
+      <li><p><strong>Un seul écran de réglages</strong>, avec des heures calmes.</p></li>
+      <li><p><strong>Une demande d'avis</strong> au bon moment, avec la fenêtre officielle d'Apple ou de Google, au plus une fois tous les deux mois.</p></li>
+      <li><p><strong>Sur Android</strong>, des canaux dédiés, une icône propre, et les annonces qui arrivent enfin.</p></li>
+      <li><p><strong>Un suivi</strong> dans le tableau de bord&nbsp;: envois et taux d'ouverture par type.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="gris">
+  <div class="contenu revele">
+    <p class="surtitre">Fiabilité, données et sécurité</p>
+    <h2>Chacun retrouve tout.</h2>
+    <p class="intro">Un audit complet de la 1.1.5 a été mené avant la sortie, et chacun de ses points importants a été corrigé.</p>
+    <ul class="coches">
+      <li><p><strong>Une sauvegarde complète</strong> de la base et des comptes avant les travaux, et de nouveau juste avant la mise en ligne.</p></li>
+      <li><p><strong>Prête pour Android 16 et iOS 27</strong>, comme Google et Apple le demandent.</p></li>
+      <li><p><strong>Le serveur mis à jour</strong> avant la date fixée par Google, sans rien changer pour les utilisateurs.</p></li>
+      <li><p><strong>Des points et badges justes</strong>, calculés par le serveur, et les anciens points repris.</p></li>
+      <li><p><strong>Les mêmes données sur l'app et le site</strong>, notes et listes de courses comprises.</p></li>
+      <li><p><strong>Une sécurité renforcée</strong>, avec une connexion Apple sécurisée et une politique de confidentialité à jour dans les 6 langues.</p></li>
+      <li><p><strong>Des correctifs attendus</strong>&nbsp;: tâche décochée encore comptée, fond noir en thème clair sur Android, premier lancement bloqué, et d'autres.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="contenu revele">
+    <p class="surtitre">Site web</p>
+    <h2>La même expérience, partout.</h2>
+    <p class="intro">Le site suit l'app, pour que tout se ressemble d'un écran à l'autre.</p>
+    <ul class="coches">
+      <li><p>La flamme, les quêtes, la vitrine des badges et les célébrations.</p></li>
+      <li><p>La corbeille de 30 jours et les suppressions avec Annuler.</p></li>
+      <li><p>La nouvelle offre, avec l'essai de 14 jours et le paiement par carte.</p></li>
+      <li><p>Les badges officiels App Store et Google Play, dans la langue du visiteur.</p></li>
+      <li><p>Une connexion avec des ambiances photo qui changent à chaque visite.</p></li>
+      <li><p>Des icônes communes avec l'app, et un site plus léger.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="gris">
+  <div class="contenu revele">
+    <p class="surtitre">Depuis le 17 octobre</p>
+    <h2>Les dernières touches.</h2>
+    <p class="intro">Les ajouts de ces derniers jours, juste avant la sortie.</p>
+    <ul class="coches">
+      <li><p><strong>Voyages refait</strong>&nbsp;: un panneau en bas de la carte avec la rangée de vos voyages, et un bouton «&nbsp;Je suis ici&nbsp;» pour créer un voyage depuis sa position.</p></li>
+      <li><p><strong>Des animations plus fluides</strong> sur toute l'application.</p></li>
+      <li><p><strong>L'aperçu masqué</strong> dans le sélecteur d'apps, réglable, avec une explication illustrée.</p></li>
+      <li><p><strong>La carte «&nbsp;Ta semaine&nbsp;»</strong> refaite sur l'accueil.</p></li>
+      <li><p><strong>Les e-mails</strong> de suppression et d'archivage du compte refaits, dans les 6 langues.</p></li>
+      <li><p><strong>Des corrections</strong>&nbsp;: rappels et résumé quotidien, écran d'abonnement, croix de fermeture sur Android.</p></li>
+      <li><p><strong>forgeme.net</strong>&nbsp;: les boutons App Store et Google Play retrouvent leur style.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="contenu revele">
+    <p class="surtitre">Les tests</p>
+    <h2>Testé. Puis testé encore.</h2>
+    <p class="intro">Avant la sortie, la 1.1.5 passe par des contrôles automatiques et par de vrais testeurs.</p>
+    <div class="chiffres">
+      <div class="chiffre"><b>3 600</b><span>contrôles du code, à chaque changement</span></div>
+      <div class="chiffre"><b>48</b><span>parcours sur iPhone et Android</span></div>
+      <div class="chiffre"><b>20</b><span>parcours sur le site</span></div>
+      <div class="chiffre"><b>71</b><span>scénarios pour les testeurs</span></div>
+    </div>
+    <ul class="coches">
+      <li><p><strong>Une campagne de testeurs</strong> sur Capmedia Test, avec deux heures d'exploration libre, sur iPhone, Android et le site.</p></li>
+      <li><p><strong>Une version de test à part</strong>, sur TestFlight et sur un site de test, avec des données fictives et des achats sans aucun débit.</p></li>
+      <li><p><strong>Chaque défaut trouvé</strong> est noté et suivi jusqu'à sa correction.</p></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="contenu" style="margin-bottom:10px"><a href="./">Retour au résumé</a></div>
+  <div class="contenu">ForgeMe 1.1.5 · mis à jour le 19 octobre 2026</div>
+</footer>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.revele');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('vu'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('vu'); io.unobserve(en.target); } });
+    }, { threshold: 0.05 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+</body>
+</html>
